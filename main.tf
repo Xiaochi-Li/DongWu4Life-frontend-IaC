@@ -9,9 +9,9 @@ terraform {
 }
 
 module "static_site" {
-	source = "./modules/s3"
-	domain_name = "dongwu4life.com"
-  url = "top10.dongwu4life.com"
-	region = "us-east-1"
-	environment = "production"
-}	
+  source      = "./modules/s3"
+  domain_name = "dongwu4life.com"
+  url         = "top10.dongwu4life.com"
+  region      = "us-east-1"
+  environment = "production"
+} 
