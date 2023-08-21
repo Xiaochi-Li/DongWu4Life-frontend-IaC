@@ -1,4 +1,12 @@
 terraform {
+  backend "remote" {
+    organization = "sean-li-terraform-cloud-learning"
+
+    workspaces {
+      name = "DongWu4Life"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
