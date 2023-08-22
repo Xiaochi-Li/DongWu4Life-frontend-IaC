@@ -1,5 +1,5 @@
 terraform {
-  backend "remote" {
+  cloud {
     organization = "sean-li-terraform-cloud-learning"
 
     workspaces {
