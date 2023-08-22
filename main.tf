@@ -5,6 +5,10 @@ terraform {
     workspaces {
       name = "DongWu4Life"
     }
+
+    project = {
+      name = "DongWu4Life-frontend-IaC"
+    }
   }
 
   required_providers {
