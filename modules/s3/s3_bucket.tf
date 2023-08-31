@@ -11,6 +11,21 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = false
 }
 
+resource "aws_kms_key" "s3" {
+  deletion_window_in_days = 7
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "configuration" {
+  bucket = aws_s3_bucket.site.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+      kms_master_key_id = aws_kms_key.s3.arn
+    }
+    bucket_key_enabled = true
+  } 
+}
 resource "aws_s3_bucket_policy" "allow_public_read" {
   bucket = aws_s3_bucket.site.id
   policy = jsonencode({
